@@ -1,0 +1,17 @@
+"builders": [
+    {
+    "type": "virtualbox-iso",
+"boot_command": [
+    " preseed/url=http://{{ .HTTPIP }}:{{ .HTTPPort }}/ubuntu-preseed.cfg<wait>",
+],
+
+
+
+"provisioners": [
+    {
+    "type": "shell",
+    "execute_command": "echo 'vagrant'|sudo -S sh '{{.Path}}'",
+    "override": {
+        "virtualbox-iso": {
+        "scripts": [
+            "scripts/server/base.sh"
